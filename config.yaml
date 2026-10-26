@@ -1,0 +1,148 @@
+# =====================================================================
+# COASTAL VULNERABILITY — BARRA DE SALAMANCA · configuración del geovisor
+# ---------------------------------------------------------------------
+# Las rutas de datos apuntan a los archivos ORIGINALES (no se copian).
+# Para probar en otro equipo cree un archivo config.local.yaml junto a
+# este con las mismas claves; sus valores se superponen a los de aquí.
+# =====================================================================
+
+aplicacion:
+  nombre: "COASTAL VULNERABILITY — BARRA DE SALAMANCA"
+  subtitulo: "Sistema geoespacial de análisis histórico, evaluación de vulnerabilidad y predicción costera"
+  area_estudio: "Barra de Salamanca, Magdalena, Caribe colombiano"
+  institucion: "Universidad del Magdalena · Maestría en Ingeniería"
+  autora: "Vanessa Yance"
+
+rutas:
+  # Raíz de CoastSat (imágenes Landsat y salidas)
+  coastsat_raiz: "D:/COASTSAS/CoastSat-master"
+  coastsat_data: "D:/COASTSAS/CoastSat-master/data"
+  exportar_coastsat: "D:/COASTSAS/CoastSat-master/exportar_coastsat"
+  # Resultados científicos de la tesis (IVC, modelos, proyecciones)
+  resultados_tesis: "D:/TRABAJO DE INVESTIGACION/Resultados tesis"
+  # Salidas propias del geovisor (relativas a la carpeta del geovisor)
+  catalogo: "resultados/catalogo"
+  cache: "resultados/cache"
+  exportaciones: "resultados/exportaciones"
+  reportes: "resultados/reportes"
+  logs: "logs"
+
+crs:
+  metrico: "EPSG:32618"      # WGS 84 / UTM zona 18N — operaciones métricas (longitudes, áreas)
+  visualizacion: "EPSG:4326" # Leaflet/Folium exige coordenadas geográficas WGS 84
+
+mapa:
+  # Encuadre inicial (lon/lat, EPSG:4326). Se calcula de los datos si 'ajustar_a_datos' es true.
+  ajustar_a_datos: true
+  centro: [-74.57, 11.02]
+  zoom_inicial: 11
+  zoom_min: 8
+  zoom_max: 18
+  mapa_base_defecto: "Esri World Imagery"
+  mapas_base:
+    - nombre: "Esri World Imagery"
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+      atribucion: "Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community"
+    - nombre: "OpenStreetMap"
+      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      atribucion: "© OpenStreetMap contributors"
+    # Los mapas de CARTO (Positron / Dark Matter) exigen clave de API desde 2026 y muestran «API KEY REQUIRED»; se usan los
+    # lienzos claro y oscuro de Esri, de acceso libre.
+    - nombre: "Esri Light Gray (claro)"
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+      atribucion: "Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS user community"
+    - nombre: "Esri Dark Gray (oscuro)"
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+      atribucion: "Tiles © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS user community"
+    - nombre: "Esri World Topo"
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+      atribucion: "Tiles © Esri — Esri, HERE, Garmin, FAO, NOAA, USGS, © OpenStreetMap contributors, and the GIS user community"
+  mostrar_coordenadas_cursor: true
+  mostrar_escala: true
+  mostrar_minimapa: false
+
+visualizacion:
+  # Tolerancia de simplificación (metros, en el CRS métrico) SOLO para dibujar en el mapa.
+  # Las exportaciones usan la geometría original.
+  simplificacion_m:
+    lineas_fecha: 3.0
+    lineas_anuales: 3.0
+    transectos: 0.0
+    poligonos: 5.0
+  max_lineas_todas: 800        # umbral de seguridad para "mostrar todas las líneas"
+  raster_max_px: 1400          # lado máximo (px) al remuestrear un ráster para visualizarlo
+  colores:
+    linea_seleccionada: "#ffd166"
+    linea_historica_inicio: "#1b9e77"   # rampa cronológica (inicio)
+    linea_historica_fin: "#d95f02"      # rampa cronológica (fin)
+    linea_anual: "#3fa7d6"
+    transectos: "#c9c9c9"
+    transectos_dsas: "#9ecae1"
+    linea_base: "#ffffff"
+    area_estudio: "#ffffff"
+    boca_cienaga: "#ff6b6b"
+    ruta90: "#f4a261"
+    prediccion_central: "#ff7f00"
+    prediccion_banda: "#ff7f00"
+    prediccion_persistencia: "#984ea3"
+    sin_dato: "#b9b7b1"
+  grosor:
+    linea_fecha: 2.5
+    linea_anual: 2.0
+    transectos: 1.0
+    prediccion: 3.0
+  opacidad:
+    lineas: 0.95
+    transectos: 0.6
+    raster_ivc: 0.85
+    raster_referencia: 1.0
+    poligonos: 0.25
+
+temporal:
+  # Capa principal del control temporal (clave de src/catalogo_datos.py):
+  #   lineas_anuales_dsas -> exportar_coastsat/dsas/lineas_anuales_dsas.shp (38 líneas anuales, insumo de DSAS)  [por defecto]
+  #   lineas_fecha        -> postproceso/lineas_fechas_completas.shp (360 fechas de imagen CoastSat)
+  capa_lineas: "lineas_anuales_dsas"
+  # Si se dejan en null se usan la primera y última fecha reales detectadas.
+  fecha_inicial: null
+  fecha_final: null
+  formato_fecha_archivo: "%Y/%m/%d %H:%M:%S"   # campo 'fecha' de lineas_fechas_completas.shp
+  formato_fecha_dsas: "%m/%d/%Y"               # campo 'DATE_' de lineas_anuales_dsas.shp
+
+ivc:
+  # Método de clasificación documentado en Mapas_IVC/LEEME_mapas.txt y QGIS_IVC/LEEME_QGIS.txt:
+  # IVC = sum(w_j * c_j) en escala 1–5 -> (IVC-1)/4 en escala 0–1; clases por intervalos iguales de 0,2.
+  metodo_clasificacion: "intervalos_iguales"
+  escala: "0-1"
+  cortes: [0.2, 0.4, 0.6, 0.8]
+  cortes_1_5: [1.8, 2.6, 3.4, 4.2]
+  clases:
+    1: {nombre: "Muy baja", color: "#1a7a37"}
+    2: {nombre: "Baja", color: "#66bd63"}
+    3: {nombre: "Moderada", color: "#f0cf3a"}
+    4: {nombre: "Alta", color: "#e2652e"}
+    5: {nombre: "Muy alta", color: "#a51c1c"}
+  version_principal: "ewm_total"
+
+predicciones:
+  horizontes_previstos: [2030, 2040, 2050, 2075, 2100]   # solo se muestran los realmente procesados
+  variante_defecto: "resultados_amortiguada"             # recomendado en LEEME_version4.txt para QGIS
+
+cache:
+  ttl_segundos: 3600
+  max_entradas: 64
+  persistir_en_disco: true
+
+modulos:
+  visor: true
+  evolucion: true
+  erosion: true
+  ivc: true
+  predicciones: true
+  evaluacion: true
+  calculadora: true
+  datos: true
+
+exportacion:
+  formatos: ["GeoJSON (EPSG:4326)", "GeoPackage (CRS original)", "CSV de atributos"]
+  png_dpi: 150

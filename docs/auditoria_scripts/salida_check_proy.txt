@@ -1,0 +1,53 @@
+=== ventanas ===
+históricas: [(1984.9123287671232, 2005.3397260273973), (2005.3397260273973, 2026.3397260273973)]  anio_ref: 2026.3397260273973
+['tasa_actual', 'tasa_2026_2047', 'tasa_2026_2047_p05', 'tasa_2026_2047_p95', 'tasa_2047_2068', 'tasa_2047_2068_p05', 'tasa_2047_2068_p95', 'tasa_2068_2089', 'tasa_2068_2089_p05', 'tasa_2068_2089_p95', 'tasa_2089_2110', 'tasa_2089_2110_p05']
+intersecciones fuera de toda ventana: 0  solapes entre ventanas: ventanas disjuntas por construcción
+tasa_ventana [a0,a1] vs rasgos_ventana [t0,t1): max diff 2.4868995751603507e-14  n distintos >1e-9: 0
+
+=== bloques y buffer ===
+bloques igual n: [84 84 84 84 84 84 84 83]  buffer_km: 3.0
+  bloque 1: n_test 84, n_train 558, distancia mínima train-test 3.061 km
+bloques con fuga (train a < buffer del test): 0
+R2_OS indep: 0.09993985223535162  geovisor: 0.09993985223535173  n: 650  beta: [-0.375026279219452, -0.993337904591069]
+OOF bloque 3 recalculado max diff: 0.0
+tesis: R2_OS amortiguada reportado +10,0 % (IC95 +1,0 a +24,3 %, 7/8 bloques); geovisor: 10.0 [1.0, 23.6] 7
+
+=== recursión y MC ===
+desplaz_m_2100 = Σ tasa·dur ? max diff: 0.0
+desplaz_m_2050 max diff: 0.0
+tasaL_2100 max diff: 0.0
+media tasa actual / W3 / W6 (central): [-4.1624, -4.1624, -4.1624, -4.1624, -4.1624]
+sigma_regional usado: 1.0  (tesis: std([0.320,1.882,-0.717], ddof=1) = 1.308 )
+  desplaz_m_2050         corr 1.0000  media geo   -98.48  media tesis   -99.90  mediana|dif| 1.30
+  desplaz_m_2100         corr 1.0000  media geo  -306.60  media tesis  -308.02  mediana|dif| 1.33
+  desplaz_m_2100_p05     corr 0.9988  media geo  -684.88  media tesis  -722.96  mediana|dif| 38.45
+  desplaz_m_2100_p95     corr 0.9746  media geo   280.70  media tesis   295.14  mediana|dif| 68.22
+  tasa21_2100            corr 1.0000  media geo    -4.16  media tesis    -4.16  mediana|dif| 0.00
+anchura banda p95-p05 2100: geovisor 946.3562817265497  tesis 1016.1606394841187
+tesis config: {'b0_b1_persistencia_amortiguada': [-0.3750466345077075, -0.9939042312187643], 'ventanas': [[2026, 2047], [2047, 2068], [2068, 2089], [2089, 2110]], 'n_mc': 2000, 'sigma_regional_m_anio': 1.3083076855235545}
+transectos con tasa_actual NaN: 0  desplaz NaN: 0
+
+=== resumen escenarios vs tesis ===
+  actual       % alta+muy alta: geovisor 10.28  tesis sin Bruun 10.283159463487332
+  ssp245_2050  % alta+muy alta: geovisor 12.97  tesis sin Bruun 12.965722801788376
+  ssp585_2050  % alta+muy alta: geovisor 14.61  tesis sin Bruun 14.605067064083457
+  ssp245_2100  % alta+muy alta: geovisor 41.73  tesis sin Bruun 42.026825633383005
+  ssp585_2100  % alta+muy alta: geovisor 44.26  tesis sin Bruun 44.560357675111774
+  ivc_ssp245_2050 vs tesis ivc_ewm_total_ssp245_2050: mediana|dif| 0.0000 max 0.0873 (la tesis incluye Bruun en ret.)
+  variables reclasificadas en ssp245_2050 : ['c_cambio_costa_ssp245_2050', 'c_nivel_mar_ssp245_2050', 'c_dist_ruta90_ssp245_2050', 'c_ancho_barra_ssp245_2050']
+  ivc_ssp585_2100 vs tesis ivc_ewm_total_ssp585_2100: mediana|dif| 0.0120 max 0.1212 (la tesis incluye Bruun en ret.)
+  variables reclasificadas en ssp585_2100 : ['c_cambio_costa_ssp585_2100', 'c_nivel_mar_ssp585_2100', 'c_dist_ruta90_ssp585_2100', 'c_ancho_barra_ssp585_2100']
+
+=== Bruun ===
+w=0.0232 m/s  A=0.0971  hc=8.373 m  L*=801 m  ΔS neto=0.356 m  R manual=22.83 m  geovisor central=22.83  p05/p95=7.8/31.4
+Hallermeier con H12=4.3,T=9.5: hc = 8.37 m (orden 8-9 m, razonable)
+SLR 0.1 m en 95 años (< rh·años) -> R: 0.0
+slr_mm por defecto geovisor: [330, 350, 810, 1030]  tesis: [325.0, 350.0, 794.0, 1009.0]
+
+=== ivc_futuro ===
+roles: {'tasa': 'c_cambio_costa', 'nivel_mar': 'c_nivel_mar', 'distancia_infra': 'c_dist_ruta90', 'ancho_barra': 'c_ancho_barra'}
+clase tasa 2100 == por_umbrales(tasaL)? True
+clase ancho 2100 == por_umbrales(ancho-ret)? True  ancho_barra: % censurados 'minimo' no se distinguen (sin columna censura en tabla_por_id)
+c_nivel_mar sin pct_nivel: igual al actual? True
+c_nivel_mar ssp585_2100 distinto del actual en 560 transectos
+IVC 2100 NaN: 0  (transectos sin tasa en la última ventana: 0 )

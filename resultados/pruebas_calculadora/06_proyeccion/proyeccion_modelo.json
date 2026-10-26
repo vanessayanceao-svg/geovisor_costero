@@ -1,0 +1,83 @@
+{
+ "tipo": "amortiguada",
+ "beta": [
+  -0.375026279219452,
+  -0.993337904591069
+ ],
+ "metricas": {
+  "n": 650,
+  "RMSE_modelo": 1.9280774543313077,
+  "RMSE_persistencia": 2.0323041777958926,
+  "MAE_modelo": 1.4175017286084683,
+  "MAE_persistencia": 1.4873963723805705,
+  "R2_OS": 0.09993985223535173,
+  "R2_OS_IC95": [
+   0.010087160843228095,
+   0.23567292814089688
+  ],
+  "P_R2_OS_menor_0": 0.015,
+  "bloques_mejora": 7,
+  "n_bloques": 8
+ },
+ "parametros": {
+  "ventana_anios": 21,
+  "horizontes": [
+   2050,
+   2100
+  ],
+  "modelo": "amortiguada",
+  "n_mc": 1000,
+  "n_bloques": 8,
+  "buffer_km": 3.0,
+  "sigma_regional": 1.308,
+  "escenarios": [
+   {
+    "clave": "ssp245_2050",
+    "nombre": "SSP2-4.5",
+    "anio": 2050,
+    "slr_mm": 325
+   },
+   {
+    "clave": "ssp585_2050",
+    "nombre": "SSP5-8.5",
+    "anio": 2050,
+    "slr_mm": 350
+   },
+   {
+    "clave": "ssp245_2100",
+    "nombre": "SSP2-4.5",
+    "anio": 2100,
+    "slr_mm": 794
+   },
+   {
+    "clave": "ssp585_2100",
+    "nombre": "SSP5-8.5",
+    "anio": 2100,
+    "slr_mm": 1009
+   }
+  ],
+  "bruun": {
+   "activo": false,
+   "H12_m": 4.3,
+   "H12_max_m": 4.7,
+   "d50_mm": 0.2,
+   "B_m": 1.0,
+   "rh_mm": [
+    3.4,
+    6.15
+   ],
+   "anio_base_slr": 2005
+  }
+ },
+ "sigma_regional_usado": 1.308,
+ "ventanas_historicas": [
+  [
+   1984.9123287671232,
+   2005.3397260273973
+  ],
+  [
+   2005.3397260273973,
+   2026.3397260273973
+  ]
+ ]
+}

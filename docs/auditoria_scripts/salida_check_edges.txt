@@ -1,0 +1,40 @@
+=== 10. exportar_todo ===
+23 archivos: ['concordancia.csv', 'escenario_ssp245_2050.csv', 'escenario_ssp245_2100.csv', 'escenario_ssp585_2050.csv', 'escenario_ssp585_2100.csv', 'indice_transectos.csv', 'indice_transectos.gpkg', 'intersecciones.csv', 'linea_base.gpkg', 'lineas_proyectadas.gpkg', 'pesos_ewm.csv', 'pesos_todos.csv', 'proyeccion_modelo.json', 'proyeccion_resumen.csv', 'proyeccion_transectos.csv', 'proyecto.json', 'redundancia_vif.csv', 'sensibilidad_pesos.csv', 'tasas.csv', 'transectos_tasas.gpkg', 'validacion.csv', 'variables_clases.csv', 'variables_valores.csv']
+  transectos_tasas.gpkg: CRS 32618  n=671  cols=35
+  indice_transectos.gpkg: CRS 32618  n=671  cols=15
+  lineas_proyectadas.gpkg: CRS 32618  n=9  cols=4
+  linea_base.gpkg: CRS 32618  n=2  cols=3
+  no exportado: redundancia_rho (Spearman entre variables): True | por_bloque (R2_OS por bloque): True | rasgos de ventanas: True | tablas % categoría: ['c_geomorfologia'] | fahp_consistencia: False | franjas de muestreo (geometría): no existe función | escenarios en GPKG: no
+  proyecto.json claves: ['nombre', 'epsg', 'version', 'lineas', 'linea_base', 'transectos', 'variables', 'ponderacion', 'indice', 'proyeccion', '_nota']  n_mc guardado: 300
+  proyeccion_modelo.json: ['tipo', 'beta', 'metricas']
+  ¿se exporta la semilla, ventanas, sigma_regional, horizontes? {'semilla': False, 'ventanas': False, 'sigma_regional': True, 'horizontes': True}
+  paso_indice ignora 'esquema_principal' (calcula todos; topsis/estructural/sensibilidad solo con EWM): True
+
+=== 11. casos límite ===
+a) 1 NaN en c_oleaje: transectos cuyo TOPSIS cambia: 670  max cambio: 0.7043  | ivc_ewm cambia en: 0
+   kappa con NaN: 0.3543713527136483  estabilidad fila NaN: 0.0
+b) fila toda NaN: ivc nan clase nan gornitz nan clase_gornitz nan
+c)    id_t  n_lineas  fecha_ini  fecha_fin   NSM   SCE  EPR  EPRUNC  LRR  LR2  LSE  LCI95
+0     1         2 2000-01-01 2000-01-01  10.0  10.0  NaN     NaN  NaN  NaN  NaN    NaN
+1     2         1 2001-01-01 2001-01-01   0.0   0.0  NaN     NaN  NaN  NaN  NaN    NaN
+2     3         3 2000-01-01 2020-01-01 -40.0  40.0 -2.0     0.5 -2.0  1.0  0.0    0.0
+   (id 1: fechas duplicadas -> años=0 -> EPR ausente; id 3: unc=0 -> WLR omitido en vez de usar unc por defecto)
+d) _ols n=2: {'tasa': np.float64(3.0), 'r2': np.float64(1.0), 'se': nan, 'ci95': nan}  (LSE/LCI95 NaN correctos)
+e) columna de texto en clases -> ValueError could not convert string to float: 'arenoso'
+f) cortes [0.1,0.3,0.5,0.7]: clase_ewm usa cortes del proyecto: True | sensibilidad idéntica a la de cortes por defecto (ignora cortes): True | estabilidad idéntica: True
+g) bloques con km constante: [0 0 0 0 0]
+h) rho con 50 % NaN en tasa: 10
+i) EWM difusa [x, 0, 1]: [0.0686 0.9314 0.    ]  <-- la constante 0 recibe peso 0.5 y la constante 1 recibe 0
+j) horizonte 2030 (< fin de W3 2047): desplaz_2030 = tasa_2026_2047 * 3.66? True  | escenarios con anio 2100 omitidos: ['ssp245_2050', 'ssp585_2050']
+   tasaL_2030 (media 2009-2030) mezcla tasa observada? solo ventanas futuras: -0.7254948543673582 vs tasa W3 -4.1623638164115935  <-- tasaL para T−L < anio_ref sólo integra (anio_ref,T) y divide por L
+k) una ventana -> ValueError No hay suficientes años de líneas de costa para una ventana
+l) L=10: [(1986.3397260273973, 1996.3397260273973), (1996.3397260273973, 2006.3397260273973), (2006.3397260273973, 2016.3397260273973), (2016.3397260273973, 2026.3397260273973)]  sigma_regional estimado: 1.267144663395082  R2_OS: 0.192  n: 671
+   ¡el modelo se ajusta solo con el último par de ventanas (H[-2]→H[-1]) aunque haya 5!
+m) kappa con clase fuera de 1..5: IndexError index 5 is out of bounds for axis 0 with size 5
+n) fuzzificar a=2, δ=2: [1. 2. 4.] [0.25 0.5  1.  ]
+o) matriz_desde_tabla con NaN triángulo inferior: [[1.0, 3.0], [0.3333333333333333, 1.0]]  con ambos NaN: [[1.0, nan], [nan, 1.0]] <-- NaN permanece → consistencia() devuelve NaN
+   pesos_fahp con NaN -> ValueError La matriz debe ser recíproca (a_ji = 1/a_ij)
+p) JSON con numpy: nan 3
+q) 1;2;2;3 5;4;3;2;1 -> Los cortes deben ser crecientes
+q) 1;2;3;4 5;4;3;2 -> z: se necesitan 4 cortes y 5 clases (p. ej. '0.33;0.81;1.03;1.31' y '5;4;3;2;1')
+r) directa todo NaN: sin error (devuelve NaN)

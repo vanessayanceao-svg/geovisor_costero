@@ -1,0 +1,7 @@
+# Copie este archivo como config.local.yaml y ponga las rutas de SU equipo (tiene prioridad sobre config.yaml y no se versiona).
+# Si no dispone de los datos de la tesis, puede dejar las rutas vacías: el geovisor arranca y la Calculadora IVC funciona con sus propios archivos.
+rutas:
+  coastsat_raiz: "D:/COASTSAS/CoastSat-master"
+  coastsat_data: "D:/COASTSAS/CoastSat-master/data"
+  exportar_coastsat: "D:/COASTSAS/CoastSat-master/exportar_coastsat"
+  resultados_tesis: "D:/TRABAJO DE INVESTIGACION/Resultados tesis"

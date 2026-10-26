@@ -1,0 +1,23 @@
+# Datos y salidas locales (no se publican)
+config.local.yaml
+config.publico.yaml
+datos_publicacion/
+resultados/cache/*
+resultados/exportaciones/*
+resultados/reportes/*
+resultados/catalogo/*
+!resultados/**/.gitkeep
+logs/*
+# los PNG de assets se regeneran con generar_fondo.py; pueden versionarse (≈100 KB)
+!logs/.gitkeep
+__pycache__/
+*.pyc
+.pytest_cache/
+.streamlit/secrets.toml
+resultados/calculadora/
+resultados/pruebas_calculadora/_tmp/
+docs/auditoria_scripts/_trabajo/
+*.pyc
+.DS_Store
+Thumbs.db
+

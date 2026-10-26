@@ -1,0 +1,24 @@
+A. intersecciones: geovisor 25068 DSAS 25068 emparejadas 25068 solo geovisor 0 solo DSAS 0
+   max|dist - Distance| = 0.004426957512038143  max|anio_dec - DecimalYea| = 0.0  max|unc - Uncertaint| = 0.0  max|xy| = 0.00458851640775756
+   bisiestos: max|anio_dec - DecimalYea| = 0.0 n= 5932
+B. n transectos comparados: 671
+campo      max|geo-DSAS|  max|indep-DSAS|  max|geo-indep|
+NSM             0.003234         0.003234       0.000e+00
+SCE             0.000710         0.000710       0.000e+00
+EPR             0.000078         0.000078       0.000e+00
+EPRUNC          0.000000         0.000000       0.000e+00
+LRR             0.000088         0.000088       7.105e-15
+LR2             0.000031         0.000031       8.216e-15
+LSE             0.000186         0.000186       7.532e-13
+LCI95           0.000005         0.000005       5.951e-14
+WLR             0.000088         0.000088       7.732e-10
+WR2             0.000031         0.000031       1.821e-14
+WSE             0.000017         0.000017       7.905e-14
+WCI             0.000005         0.000005       1.914e-10
+   ShrCount vs n_lineas: max diff 0
+   decimales DSAS LRR ejemplo: [6.788648974773927, 7.604006540954205, 8.428307237496169]
+C. NSM<0 (%): 85.6929955290611  (informe DSAS: 85.69 %)
+   transecto 1: dist ini/fin [148.57083236374038, 212.33185506448967]  coordenadas: [[516613.84448666376, 1227669.68075862], [516577.9052001169, 1227722.3479751626]]  base: (np.float64(516697.5873359884), np.float64(1227546.959825539))  u(tierra): (np.float64(0.5636560554474367), np.float64(-0.8260095950758902))
+D. n_lineas min: 17  transectos con n<10: 0
+   transectos de la tesis con LRR nulo en DSAS: 0
+E. pares (transecto, fecha) con cortes múltiples: 0 de 25068  max separación (m): 0.0

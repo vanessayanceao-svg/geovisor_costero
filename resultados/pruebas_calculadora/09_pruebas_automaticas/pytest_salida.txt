@@ -1,0 +1,32 @@
+..................................................                       [100%]
+=============================== warnings summary ===============================
+tests/test_geometrias.py::test_geometrias_vacias_y_nulas
+  /home/claude/geovisor_costero/src/vectores.py:88: UserWarning: GeoSeries.notna() previously returned False for both missing (None) and empty geometries. Now, it only returns False for missing values. Since the calling GeoSeries contains empty geometries, the result has changed compared to previous versions of GeoPandas.
+  Given a GeoSeries 's', you can use '~s.is_empty & s.notna()' to get back the old behaviour.
+  
+  To further ignore this warning, you can do: 
+  import warnings; warnings.filterwarnings('ignore', 'GeoSeries.notna', UserWarning)
+    g = g[g.geometry.notna()]
+
+tests/test_inventario.py::test_inventario_y_catalogo
+  /usr/local/lib/python3.13/dist-packages/pyogrio/core.py:169: RuntimeWarning: Field format 'TIMESTAMP' not supported
+    return ogr_list_layers(get_vsi_path_or_buffer(path_or_buffer))
+
+tests/test_inventario.py::test_inventario_y_catalogo
+  /usr/local/lib/python3.13/dist-packages/pyogrio/core.py:169: RuntimeWarning: Field format '' not supported
+    return ogr_list_layers(get_vsi_path_or_buffer(path_or_buffer))
+
+tests/test_inventario.py::test_inventario_y_catalogo
+  /usr/local/lib/python3.13/dist-packages/pyogrio/core.py:320: RuntimeWarning: Field format 'TIMESTAMP' not supported
+    return ogr_read_info(
+
+tests/test_inventario.py::test_inventario_y_catalogo
+  /usr/local/lib/python3.13/dist-packages/pyogrio/core.py:320: RuntimeWarning: Field format '' not supported
+    return ogr_read_info(
+
+tests/test_modulos.py::test_ivc_estadisticas_y_rasters
+  /home/claude/geovisor_costero/src/rasteres.py:155: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+    transform = src.transform * src.transform.scale(src.width / shape[2], src.height / shape[1])
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+50 passed, 6 warnings in 11.62s

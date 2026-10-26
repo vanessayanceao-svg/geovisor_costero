@@ -1,0 +1,46 @@
+=== raster_estadistico ===
+mediana franja 0-200 (esperado ≈100): [97.5, 97.5, 97.5, nan, 97.5, 97.5, 97.5, 97.5, 97.5, 97.5]
+media (esperado ≈100): [97.5, 97.5, 97.5, nan, 97.5, 97.5, 97.5, 97.5, 97.5, 97.5]
+pct_bajo 50 (esperado 25 %): [25.0, 25.0, 25.0, nan, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0]
+pct_nodata (transecto 4: franja x 350-450, nodata en 350-400 → 50 %): [0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+min/max (esperado 2.5-7.5 / 192.5-197.5): [2.5, 2.5, 2.5] [192.5, 192.5, 192.5]
+¿-9999 se filtró? min de todos: 2.5
+zonal exacta transecto 1: media 100.0 mediana 100.0  n celdas 800
+
+=== raster_pendiente ===
+pendiente (esperado 45°: dz/dy = 1): [45.0, 45.0, 45.0, nan, 45.0, 45.0, 45.0, 45.0, 45.0, 45.0]
+pendiente 1 % (esperado 0.573°): [0.573, 0.573, 0.573]
+
+=== ráster en EPSG:4326 (reproyección) ===
+mediana con ráster geográfico (esperado ≈100): [98.27, 98.27, 98.27, 98.27]
+resolución deducida (deg*111000): 5.077818741427791  forma: (788, 591)
+
+=== vector_categorico / vector_numerico ===
+cat        A     B  sin_dato
+id_ivc                      
+1       75.0  25.0       0.0
+2       50.0  50.0       0.0
+3       50.0  50.0       0.0
+dominante: ['A', 'A', 'A']  (esperado A, luego empate A/B → idxmax = primero)
+media por área 'val' (esperado 15 para t1; 20 resto): [15.0, 20.0, 20.0]
+con polígonos solapados: suma % transecto 2 = 200.0  sin_dato: 0.0  <-- > 100 %
+cobertura parcial t2: A 50.0  sin_dato 50.0  dominante: A  (A domina aunque 50 % sin dato)
+excluir ('a',) con categoría 'A' -> dominante: ['A', 'A']  (sensible a mayúsculas)
+
+=== distancia_a / mas_cercano ===
+distancia sin filtro (esperado 50): [50.0, 50.0]  con filtro tipo=='primaria' (esperado 300): [300.0, 300.0]
+mas_cercano (esperado 1,1,1,2,...): [1.0, 1.0, 1.0, 2.0, 2.0, 2.0]
+
+=== tabla_por_id ===
+ids duplicados -> ValueError : cannot reindex on an axis with duplicate labels
+columna mixta (2 texto, 1 número): ['playa', 'duna', '3']
+columna 3 números + 1 texto -> numérica con NaN: [1.0, 2.0, nan, 4.0]
+
+=== ancho_barra ===
+   valor censura
+1  310.0        
+2  410.0        
+3  310.0        
+4  310.0         
+(esperado: t1 ≈300, t2 ≈400 (ignora agua de 30 m), censura '')
+P0 50 m dentro del mar: ancho t1 = 310.0  (300 desde P0; 250 desde la orilla)

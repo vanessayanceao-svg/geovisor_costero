@@ -1,0 +1,22 @@
+[theme]
+base = "light"
+primaryColor = "#3B6CF0"
+backgroundColor = "#EEF2FA"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1B2440"
+font = "Manrope, sans-serif"
+headingFont = "Poppins, sans-serif"
+baseRadius = "12px"
+buttonRadius = "11px"
+dataframeBorderColor = "#E1E6F2"
+dataframeHeaderBackgroundColor = "#F6F8FD"
+dataframeHeaderTextColor = "#55596A"
+
+[server]
+headless = true
+runOnSave = false
+maxUploadSize = 200
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false

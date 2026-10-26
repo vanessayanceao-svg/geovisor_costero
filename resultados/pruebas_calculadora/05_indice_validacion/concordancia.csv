@@ -1,0 +1,16 @@
+﻿a,b,kappa_cuadratico,coincidencia_pct
+clase_ewm,clase_iguales,0.35399585346522255,42.62295081967213
+clase_ewm,clase_topsis_ewm,0.760119994404406,79.43368107302533
+clase_ewm,clase_topsis_rel_ewm,0.9361360762505608,93.74068554396423
+clase_ewm,clase_ewm_estructural,0.9031436976617948,89.41877794336811
+clase_iguales,clase_topsis_ewm,0.22863246076800237,23.39791356184799
+clase_iguales,clase_topsis_rel_ewm,0.34425068364190614,38.59910581222057
+clase_topsis_ewm,clase_topsis_rel_ewm,0.7986546057656636,83.60655737704919
+clase_cvi_gornitz,clase_ewm,0.607975199355367,30.104321907600596
+clase_cvi_gornitz,clase_iguales,0.2848189300411521,20.268256333830102
+clase_cvi_gornitz,clase_topsis_ewm,0.4149383284512065,24.88822652757079
+clase_cvi_gornitz,clase_topsis_rel_ewm,0.5480923446788191,27.57078986587183
+clase_cvi_gornitz,clase_ewm_estructural,0.6006837160872421,29.210134128166914
+clase_ewm_estructural,clase_iguales,0.3144230608177143,36.0655737704918
+clase_ewm_estructural,clase_topsis_ewm,0.7924497487126316,81.37108792846497
+clase_ewm_estructural,clase_topsis_rel_ewm,0.8911272054500667,88.52459016393442

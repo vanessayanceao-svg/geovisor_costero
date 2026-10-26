@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "Si usa este software, cítelo como se indica."
+title: "Coastal Vulnerability System: geovisor y calculadora del Índice de Vulnerabilidad Costera — Barra de Salamanca"
+type: software
+version: "1.0"
+date-released: "2026-10-26"
+license: MIT
+authors:
+  - family-names: Yance
+    given-names: Vanessa
+    affiliation: "Universidad del Magdalena, Maestría en Ingeniería"
+keywords:
+  - vulnerabilidad costera
+  - erosión costera
+  - DSAS
+  - CoastSat
+  - índice de vulnerabilidad costera
+  - Barra de Salamanca
+abstract: "Geovisor científico y calculadora genérica del Índice de Vulnerabilidad Costera (IVC): transectos y tasas DSAS, ponderación EWM/FAHP, TOPSIS y Gornitz, validación espacial por bloques y proyección 2050/2100 bajo escenarios SSP."

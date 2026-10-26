@@ -1,0 +1,16 @@
+variable,nombre,n_validos_geovisor,n_validos_tesis,max_abs_dif_clase,identicas
+c_cambio_costa,Cambio de la línea de costa (LRR 1984‑2026),671,671,0.0,True
+c_geomorfologia,Geomorfología (unidad natural dominante 0‑200 m),671,671,0.0,True
+c_elevacion,"Elevación mediana 0‑200 m (DeltaDTM, m)",671,671,0.0,True
+c_pendiente,Pendiente del terreno 0‑200 m (°),671,671,0.0,True
+c_pendiente_playa,Pendiente de la cara de playa (°),671,671,0.0,True
+c_oleaje,Oleaje Hs p95 (m),671,671,0.0,True
+c_nivel_mar,% del terreno 0‑500 m bajo el nivel AR6 SSP2‑4.5 2050,671,671,0.0,True
+c_granulometria,Tamaño medio de grano (mm),671,671,0.0,True
+c_sustrato,Sustrato (grupo natural dominante 0‑200 m),671,671,0.0,True
+c_cobertura,Cobertura de la tierra 2025 (promedio por área 0‑500 m),671,671,0.0,True
+c_uso_suelo,Uso del suelo (promedio por área 0‑500 m),671,671,0.0,True
+c_dist_ruta90,Distancia a la Ruta 90 (m),671,671,0.0,True
+c_vivienda,Área construida 0‑500 m (%),671,671,0.0,True
+c_densidad_pob,Densidad poblacional (hab/km²),671,671,0.0,True
+c_ancho_barra,Ancho de la barra (m),671,671,0.0,True
