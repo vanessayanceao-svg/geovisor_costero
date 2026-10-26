@@ -1,0 +1,40 @@
+{
+ "modelo": "Ridge (8 rasgos de la historia), Delta entre ventanas de 21 anios",
+ "alfa": 630.9573444801937,
+ "coeficientes_estandarizados": {
+  "LRR_1984_2005": -0.03916863283147925,
+  "LRR_1995_2004": -0.08707909060878367,
+  "aceleracion_1984_2004": 0.05264596018566461,
+  "de_residuo_1984_2004": 0.2581506371589176,
+  "LRR_1984_2005_vecinos_2km": -0.010760896513752819,
+  "anomalia_LRR_1km": -0.0949782528294594,
+  "anomalia_LRR_2km": -0.1952637600576997,
+  "anomalia_LRR_3km": -0.2358410865513426
+ },
+ "intercepto": -0.3747061538461539,
+ "ventanas": [
+  [
+   2026,
+   2047
+  ],
+  [
+   2047,
+   2068
+  ],
+  [
+   2068,
+   2089
+  ],
+  [
+   2089,
+   2110
+  ]
+ ],
+ "n_mc": 2000,
+ "semilla": 2026,
+ "error": "residuos OOF anidados de la Ridge (buffer 3 km), desplazamiento circular aleatorio por paso",
+ "pesos": "EWM 2026 fijos",
+ "bruun": "no aplicado (insumos pendientes)",
+ "tendencia_regional": "aprendida",
+ "sigma_regional_m_anio": null
+}

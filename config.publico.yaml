@@ -1,0 +1,14 @@
+rutas:
+  coastsat_raiz: datos_publicacion/coastsat_raiz
+  coastsat_data: datos_publicacion/coastsat_data_vacio
+  exportar_coastsat: datos_publicacion/exportar_coastsat
+  resultados_tesis: datos_publicacion/resultados_tesis
+modulos:
+  visor: true
+  evolucion: true
+  erosion: true
+  ivc: true
+  predicciones: true
+  evaluacion: true
+  calculadora: true
+  datos: true

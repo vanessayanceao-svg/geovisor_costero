@@ -1,0 +1,46 @@
+{
+ "type": "FeatureCollection",
+ "name": "boca_de_cienaga",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:EPSG::32618"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "nombre": "boca_cienaga_grande",
+    "nota": "Zona excluida del analisis DSAS (canal de la boca). Hecho a partir de la captura de QGIS 2026-09-24."
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       577061.0,
+       1215443.0
+      ],
+      [
+       577426.0,
+       1215627.0
+      ],
+      [
+       577833.0,
+       1214714.0
+      ],
+      [
+       577505.0,
+       1214552.0
+      ],
+      [
+       577061.0,
+       1215443.0
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

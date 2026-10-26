@@ -1,0 +1,17 @@
+﻿version,titulo
+ewm_total,"IVC por entropía (EWM), índice principal"
+ewm_estructural,IVC estructural (14 variables)
+topsis_ewm,IVC por TOPSIS-EWM
+pesos_iguales,IVC con pesos iguales
+cvi_gornitz,CVI de Gornitz (quintiles)
+ewm_2005,"IVC, estado 2005 (reconstruido)"
+ewm_2026,IVC 2026 observado
+persistencia_2026,IVC 2026 por persistencia
+rf_2026,IVC 2026 por Random Forest
+ridge_2026,IVC 2026 por regresión ridge
+cnn_lstm_2026,IVC 2026 por CNN-LSTM
+apilamiento_2026,IVC 2026 por apilamiento (IVC-ML)
+ssp245_2050,"IVC SSP2-4.5, 2050"
+ssp585_2050,"IVC SSP5-8.5, 2050"
+ssp245_2100,"IVC SSP2-4.5, 2100"
+ssp585_2100,"IVC SSP5-8.5, 2100"

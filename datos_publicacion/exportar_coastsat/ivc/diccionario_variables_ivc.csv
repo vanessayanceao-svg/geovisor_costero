@@ -1,0 +1,89 @@
+﻿columna,unidad,fuente,metodo,sentido,uso
+id_ivc,-,DSAS,orden oeste-este (linea base 1 y luego 2),,id
+BaselineID,-,DSAS v6.1.177,linea base,,id
+TransOrder,-,DSAS v6.1.177,orden del transecto en su linea base,,id
+dist_costa_km,km,calculo,distancia acumulada entre puntos P0 desde Bocas de Ceniza,,id
+zona,-,calculo,'espiga_bocas_ceniza' si dist_costa_km <= 3,,id
+x_p0,m,DSAS,interseccion del transecto con la linea 2026 (EPSG:32618),,id
+y_p0,m,DSAS,idem,,id
+lon_p0,grados,calculo,P0 en EPSG:4326,,id
+lat_p0,grados,calculo,P0 en EPSG:4326,,id
+LRR,m/anio,DSAS v6.1.177,"regresion lineal de la posicion de la costa vs tiempo, 1984-2026",-,objetivo
+LCI95,m/anio,DSAS,intervalo de confianza del 95 % de LRR,,objetivo
+LR2,-,DSAS,R2 de la regresion,,objetivo
+EPR,m/anio,DSAS,tasa entre la linea mas antigua y la mas reciente,-,contraste
+NSM,m,DSAS,movimiento neto 1984-2026,-,contraste
+LRR_1984_2005,m/anio,calculo (intersecciones DSAS),regresion lineal de las lineas anteriores a 2005 (min. 4 lineas y 8 anios),-,entrada
+LRR_2005_2026,m/anio,calculo (intersecciones DSAS),regresion lineal de las lineas desde 2005 (validacion independiente),-,objetivo
+geom_dominante_0_200,-,Geomorfologia Barra de Salamanca (INVEMAR),clase con mayor area en 0-200 m,cat,entrada
+geo200_pct_area_urbana,%,idem,area urbana / area de la franja 0-200 m x 100,-,descriptiva
+geom_dominante_nat_0_200,-,idem,"unidad natural con mayor area en 0-200 m, sin area urbana (entra al IVC)",cat,entrada
+geo_pct_area_urbana,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+geo_pct_campos_dunas,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+geo_pct_laguna_costera,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+geo_pct_pantano_manglar,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+geo_pct_playas,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+geo_pct_playones,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+geo_pct_salares_zonas_inundacion,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+geo_pct_sin_dato,%,idem,area de cada unidad / area de la franja 0-500 m x 100,?,entrada
+sust_dominante_0_200,-,"IGAC, estudio general de suelos del Magdalena 1:100.000 (2009)",grupo de sustrato con mayor area en 0-200 m (UCS agrupadas por material y textura),cat,entrada
+sust_pct_no_cohesivo_0_200,%,idem,area de sustrato arenoso no cohesivo (UCS RWQ) / area de la franja 0-200 m x 100,+,entrada
+sust200_pct_urbano,%,idem,zona urbana ZU / area de la franja 0-200 m x 100,-,descriptiva
+sust_dominante_nat_0_200,-,idem,"grupo de sustrato con mayor area en 0-200 m, sin zona urbana ZU (entra al IVC)",cat,entrada
+sust_pct_agua,%,idem,area de cada grupo de sustrato / area de la franja 0-500 m x 100,?,descriptiva
+sust_pct_arenoso_no_cohesivo,%,idem,area de cada grupo de sustrato / area de la franja 0-500 m x 100,?,descriptiva
+sust_pct_fino_cohesivo,%,idem,area de cada grupo de sustrato / area de la franja 0-500 m x 100,?,descriptiva
+sust_pct_fluviomarino_medio,%,idem,area de cada grupo de sustrato / area de la franja 0-500 m x 100,?,descriptiva
+sust_pct_urbano,%,idem,area de cada grupo de sustrato / area de la franja 0-500 m x 100,?,descriptiva
+sust_pct_sin_dato,%,idem,area de cada grupo de sustrato / area de la franja 0-500 m x 100,?,descriptiva
+suelo_ucs_p0,-,idem,unidad cartografica de suelo mas cercana a P0,,control
+elev_mediana_0_200,m (EGM2008),DeltaDTM v1.1 (picos de dosel corregidos),mediana del terreno en 0-200 m,-,entrada
+elev_p90_0_200,m (EGM2008),DeltaDTM v1.1 (picos de dosel corregidos),percentil 90 del terreno en 0-200 m (cresta de berma o duna),-,entrada
+pend_terreno_media_0_200,grados,DeltaDTM v1.1 (picos de dosel corregidos),pendiente media del terreno en 0-200 m,-,entrada
+pct_agua_dem_0_500,%,DeltaDTM v1.1,celdas de agua (NoData) en 0-500 m,+,entrada
+ancho_barra_m,m,DeltaDTM v1.1,distancia desde P0 hacia tierra hasta el primer tramo de agua continua >= 60 m,-,entrada
+ancho_barra_censura,-,calculo,'minimo' = no se encontro agua en 6 km (cota inferior); 'barra_no_resuelta' = el DEM tiene tierra por delante de P0 y agua detras: la barra de 2011-2015 se erosiono y la actual es mas angosta que 60 m (ancho = 0),,control
+pend_playa_grados,grados,"INVEMAR (Ricaurte-Villota et al., 2018)","punto medio de la clase de pendiente del tramo, suavizado 500 m",-,entrada
+ancho_playa_invemar_m,m,"INVEMAR (Ricaurte-Villota et al., 2018)",punto medio de la clase de ancho de playa del tramo,-,entrada
+estado_morfodinamico_invemar,-,"INVEMAR (Ricaurte-Villota et al., 2018)",disipativa / intermedia / reflectiva,cat,entrada
+tmg_phi,phi,Ferrucho-Maloof et al. (2022); Gamez Ramirez (2011); INVEMAR (2016); CORPAMAG-INVEMAR (2017),tamano medio de grano Mz (Folk y Ward) de la playa subaerea de la estacion mas cercana a lo largo de la costa,+,entrada
+tmg_mm,mm,idem,2^(-tmg_phi),-,entrada
+tmg_clase,-,idem,clase de Wentworth (1922) de tmg_mm,cat,descriptiva
+tmg_estacion,-,idem,estacion de granulometria asignada (la mas cercana a P0),-,control
+tmg_dist_estacion_km,km,idem,distancia a lo largo de la costa entre P0 y la estacion asignada (incertidumbre),-,control
+hs_media_m,m,"Boyas virtuales SWAN BV11-BV14 (OCEANICOS-UDEM-UNINORTE, 2012)","media de Hs 1979-2011, interpolada por longitud de P0",+,entrada
+hs_p95_m,m,idem,"percentil 95 de Hs 1979-2011, interpolado por longitud de P0",+,entrada
+q_litoral_indice,m^2.5,idem + Azimuth DSAS,"media de Hs^2.5 sin(2 theta), theta = Dir - normal; + = hacia el este",?,entrada
+slr_ssp245_2050_mm,mm,"IPCC AR6 (Garner et al., 2021)",mediana de la proyeccion respecto de 1995-2014 en el pixel valido mas cercano a P0,+,escenario_OE4
+slr_ssp245_2100_mm,mm,"IPCC AR6 (Garner et al., 2021)",mediana de la proyeccion respecto de 1995-2014 en el pixel valido mas cercano a P0,+,escenario_OE4
+slr_ssp585_2050_mm,mm,"IPCC AR6 (Garner et al., 2021)",mediana de la proyeccion respecto de 1995-2014 en el pixel valido mas cercano a P0,+,escenario_OE4
+slr_ssp585_2100_mm,mm,"IPCC AR6 (Garner et al., 2021)",mediana de la proyeccion respecto de 1995-2014 en el pixel valido mas cercano a P0,+,escenario_OE4
+pct_bajo_slr_ssp245_2050,%,DeltaDTM + IPCC AR6,terreno de 0-500 m con z <= nivel del escenario (modelo de banera),+,escenario_OE4
+pct_bajo_slr_ssp245_2100,%,DeltaDTM + IPCC AR6,terreno de 0-500 m con z <= nivel del escenario (modelo de banera),+,escenario_OE4
+pct_bajo_slr_ssp585_2050,%,DeltaDTM + IPCC AR6,terreno de 0-500 m con z <= nivel del escenario (modelo de banera),+,escenario_OE4
+pct_bajo_slr_ssp585_2100,%,DeltaDTM + IPCC AR6,terreno de 0-500 m con z <= nivel del escenario (modelo de banera),+,escenario_OE4
+cob_dominante_0_500,-,"Cobertura de la tierra 2025 (datos no publicados; leyenda Corine, IDEAM 2010)",grupo con mayor area en 0-500 m,cat,entrada
+cob_pct_agua,%,idem,area de cada grupo de cobertura / area de la franja x 100,?,entrada
+cob_pct_arenas_naturales,%,idem,area de cada grupo de cobertura / area de la franja x 100,?,entrada
+cob_pct_artificial,%,idem,area de cada grupo de cobertura / area de la franja x 100,?,entrada
+cob_pct_bosque,%,idem,area de cada grupo de cobertura / area de la franja x 100,?,entrada
+cob_pct_herbazal_arbustal,%,idem,area de cada grupo de cobertura / area de la franja x 100,?,entrada
+cob_pct_humedal,%,idem,area de cada grupo de cobertura / area de la franja x 100,?,entrada
+cob_pct_sin_vegetacion_degradada,%,idem,area de cada grupo de cobertura / area de la franja x 100,?,entrada
+uso_dominante_0_500,-,"INVEMAR, usos del suelo 2010, 1:100.000",uso con mayor area en 0-500 m,cat,entrada
+uso_pct_domestico,%,idem,area de cada uso / area de la franja x 100,?,entrada
+uso_pct_ganadero,%,idem,area de cada uso / area de la franja x 100,?,entrada
+uso_pct_pesquero,%,idem,area de cada uso / area de la franja x 100,?,entrada
+uso_pct_residencial_rural,%,idem,area de cada uso / area de la franja x 100,?,entrada
+uso_pct_residencial_urbano,%,idem,area de cada uso / area de la franja x 100,?,entrada
+uso_pct_sin_uso_aparente,%,idem,area de cada uso / area de la franja x 100,?,entrada
+uso_pct_sin_dato,%,idem,area de cada uso / area de la franja x 100,?,entrada
+dist_ruta90_m,m,"IGAC 1:10.000 (Via, VTipo 1) + OpenStreetMap (trunk/ref 90)",distancia euclidiana de P0 a la Troncal del Caribe,-,entrada
+n_constr_0_500,n,IGAC 1:2.000 y 1:10.000,construcciones sin duplicar en 0-500 m,+,entrada
+dens_constr_km2_0_500,n/km2,idem,n_constr_0_500 / area de la franja,+,entrada
+pct_huella_constr_0_500,%,idem,area construida / area de la franja x 100,+,entrada
+cod_mpio,-,DANE,codigo del municipio de P0,,id
+dens_pob_dane_2026,hab/km2,"DANE, proyecciones de poblacion municipal 2020-2035",densidad total 2026 del municipio de P0,+,entrada
+elev_imputada,-,calculo,1 = elevacion (mediana y p90) interpolada a lo largo de la costa: la franja 0-200 m no tiene terreno en DeltaDTM,,control
+pend_terreno_imputada,-,calculo,1 = pendiente del terreno interpolada a lo largo de la costa,,control
+pct_bajo_slr_imputado,%,DeltaDTM + IPCC AR6,terreno de 0-500 m con z <= nivel del escenario (modelo de banera),+,escenario_OE4
