@@ -1,7 +1,6 @@
 # Datos y salidas locales (no se publican)
 config.local.yaml
-config.publico.yaml
-datos_publicacion/
+# config.publico.yaml y datos_publicacion/ SÍ se versionan: son la copia ligera que usa la app publicada
 resultados/cache/*
 resultados/exportaciones/*
 resultados/reportes/*

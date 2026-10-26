@@ -27,14 +27,36 @@ def _fusionar(base: dict, extra: dict) -> dict:
     return salida
 
 
+ARCHIVO_CONFIG_PUBLICO = RAIZ_GEOVISOR / "config.publico.yaml"
+
+
+def _config_local_disponible() -> Path | None:
+    """config.local.yaml si sus rutas existen en esta máquina; si no (p. ej. en Streamlit Cloud), config.publico.yaml."""
+    for candidato in (ARCHIVO_CONFIG_LOCAL, ARCHIVO_CONFIG_PUBLICO):
+        if not candidato.exists():
+            continue
+        try:
+            with open(candidato, encoding="utf-8") as f:
+                rutas = (yaml.safe_load(f) or {}).get("rutas", {})
+        except Exception:  # noqa: BLE001
+            continue
+        base = rutas.get("exportar_coastsat") or rutas.get("resultados_tesis")
+        if not base:
+            return candidato
+        p = Path(str(base).replace("\\", "/"))
+        if (p if p.is_absolute() else RAIZ_GEOVISOR / p).exists():
+            return candidato
+    return ARCHIVO_CONFIG_LOCAL if ARCHIVO_CONFIG_LOCAL.exists() else None
+
+
 def cargar_config(ruta: str | os.PathLike | None = None) -> dict[str, Any]:
     """Lee config.yaml y, si existe, config.local.yaml (o la ruta de GEOVISOR_CONFIG)."""
     ruta = Path(ruta) if ruta else ARCHIVO_CONFIG
     with open(ruta, encoding="utf-8") as f:
         cfg = yaml.safe_load(f) or {}
     local = os.environ.get("GEOVISOR_CONFIG_LOCAL")
-    local = Path(local) if local else ARCHIVO_CONFIG_LOCAL
-    if local.exists():
+    local = Path(local) if local else _config_local_disponible()
+    if local is not None and local.exists():
         with open(local, encoding="utf-8") as f:
             cfg = _fusionar(cfg, yaml.safe_load(f) or {})
         cfg.setdefault("_meta", {})["config_local"] = str(local)
