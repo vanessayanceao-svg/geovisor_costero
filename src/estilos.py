@@ -238,6 +238,50 @@ div[data-testid="stPlotlyChart"] {{ background:var(--card); border:1px solid var
 .stToggle label p {{ font-size:.8rem; }}
 hr {{ border-color:var(--borde); }}
 .leaflet-container {{ font-family:'Manrope', sans-serif; }}
+
+/* ---------- Teléfonos y pantallas estrechas ---------- */
+@media (max-width: 760px) {{
+  .block-container {{ padding: .5rem .7rem 1.5rem !important; }}
+  .gv-hero {{ padding: 16px 16px 30px; border-radius: 20px; }}
+  .gv-hero-grid {{ grid-template-columns: 1fr; gap: 12px; }}
+  .gv-brand {{ gap: 10px; }} .gv-brand .logo {{ width: 42px; height: 42px; border-radius: 13px; }} .gv-brand .logo svg {{ width: 24px; height: 24px; }}
+  .gv-eyebrow {{ font-size: .56rem !important; letter-spacing: .14em; white-space: normal; }}
+  .gv-title {{ font-size: 1.22rem !important; white-space: normal; line-height: 1.15 !important; }}
+  .gv-sub {{ font-size: .76rem !important; max-width: none; }}
+  .gv-stats {{ grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; }}
+  .gv-stat {{ min-height: 56px; padding: 8px 10px; border-radius: 14px; }}
+  .gv-stat .n {{ font-size: 1.1rem; }} .gv-stat .l {{ font-size: .62rem; }}
+  .gv-chips {{ gap: 6px; margin-top: 12px; }}
+  .gv-chip {{ font-size: .68rem; padding: 5px 10px; }}
+  .gv-chip.proy {{ white-space: normal; max-width: 100%; }}
+  .gv-olas {{ height: 60px; }}
+  /* navegación principal: botones a dos columnas, ancho completo */
+  .st-key-seccion {{ margin: 10px 0 2px; }}
+  .st-key-seccion div[role="radiogroup"] {{ width: 100%; border-radius: 18px; gap: 4px; padding: 5px; box-sizing: border-box; flex-direction: row !important; flex-wrap: wrap !important; }}
+  .st-key-seccion div[role="radiogroup"] > div {{ flex: 1 1 calc(50% - 4px); padding: 8px 6px; border-radius: 12px; display: flex; justify-content: center; }}
+  .st-key-seccion label[data-testid="stRadioOption"] p {{ font-size: .74rem; white-space: normal; text-align: center; line-height: 1.2; }}
+  .st-key-tema_toggle {{ margin-top: -6px; }}
+  /* secciones, KPI, pestañas y tablas */
+  .gv-seccion .ic {{ width: 38px; height: 38px; border-radius: 12px; }} .gv-seccion h3 {{ font-size: 1.05rem; }} .gv-seccion p {{ font-size: .74rem; }}
+  .gv-kpi {{ min-height: 62px; padding: 10px 12px; border-radius: 16px; gap: 10px; }}
+  .gv-kpi .ic {{ width: 36px; height: 36px; border-radius: 11px; }} .gv-kpi .ic svg {{ width: 18px; height: 18px; }}
+  .gv-kpi .v {{ font-size: 1.08rem; }} .gv-kpi .l {{ font-size: .66rem; white-space: normal; }} .gv-kpi .spark {{ display: none; }}
+  .stTabs [role="tablist"] {{ width: 100%; box-sizing: border-box; gap: 3px; padding: 4px; border-radius: 12px; }}
+  .stTabs [data-testid="stTab"] {{ flex: 1 1 auto; padding: 6px 9px; text-align: center; }}
+  .stTabs [data-testid="stTab"] p {{ font-size: .74rem; white-space: normal; }}
+  .gv-tabla table {{ font-size: .74rem; }} .gv-tabla th, .gv-tabla td {{ padding: 6px 8px; }}
+  .gv-panel {{ padding: 12px 12px; border-radius: 16px; }}
+  .stButton > button, .stDownloadButton > button {{ width: 100%; }}
+  [data-testid="stRadio"] [role="radiogroup"] {{ flex-wrap: wrap; }}
+  iframe, .stPlotlyChart, [data-testid="stIFrame"] {{ max-width: 100%; }}
+  /* columnas de Streamlit: dos por fila en lugar de apilarlas todas (botones, KPI, selectores) */
+  [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"]:only-child > .stButton) {{ flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; }}
+  [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"]:only-child > .stButton) > [data-testid="stColumn"] {{ flex: 1 1 calc(50% - 8px) !important; width: auto !important; min-width: calc(50% - 8px) !important; }}
+}}
+@media (max-width: 420px) {{
+  .gv-title {{ font-size: 1.08rem !important; }}
+  .gv-stats {{ grid-template-columns: 1fr 1fr; }}
+}}
 </style>
 """
 
